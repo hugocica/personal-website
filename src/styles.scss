@@ -1,9 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-$primary-color: #38C5B9;
+@import "./assets/scss/variables";
 
 * {
   box-sizing: border-box;
+}
+
+// every before and after will extend
+%bfaf {
+	content: "";
+	position: absolute;
+	display: block;
+}
+
+.clearfix {
+    &:before, &:after {
+        content: " ";
+        display: block;
+    }
+    &:after {
+        clear: both;
+    }
 }
 
 body {

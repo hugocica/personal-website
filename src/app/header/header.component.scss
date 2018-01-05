@@ -1,5 +1,5 @@
 
-$primary-color: #38C5B9;
+@import "../../assets/scss/variables";
 
 @mixin easeOut {
   transition: all .4s cubic-bezier(0.23, 1, 0.32, 1)
@@ -14,60 +14,75 @@ $primary-color: #38C5B9;
 .header {
   position: fixed;
   z-index: 5;
-  width: 100%;
-}
+  width: 100vw;
+  height: 70px;
+  background-color: $header-color;
 
-.burger {
+  .logo-wrapper {
+    max-width: 60px;
+    position: relative;
+    left: 25px;
+    padding: 5px 0;
+
+    .home-link {
+      max-width: 100%;
+
+      .logo {
+        max-width: 100%;
+      }
+    }
+  }
+  .burger {
     position: absolute;
     z-index: 10;
     right: 25px;
-    top: 25px;
+    top: calc(50% - 7px);
     cursor: pointer;
     transform: rotateY(0);
     @include easeOut;
 
     &__patty {
-        width: 28px;
-        height: 2px;
-        margin: 0 0 4px 0;
-        background: #fff;
-        @include easeOut;
+      width: 28px;
+      height: 2px;
+      margin: 0 0 4px 0;
+      background: #fff;
+      @include easeOut;
 
-        &:last-child {
-            margin-bottom: 0;
-        }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     // transform burger into 'x'
     &--close {
-        transform: rotate(180deg);
+      transform: rotate(180deg);
 
-        .burger__patty {
-            &:nth-child(1) {
-                transform: rotate(45deg) translate(4px, 4px);
-            }
-            &:nth-child(2) {
-                opacity: 0;
-            }
-            &:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -4px);
-            }
+      .burger__patty {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(4px, 4px);
         }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -4px);
+        }
+      }
     }
-}
+  }
 
-.menu {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    visibility: hidden;
+  .menu {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      visibility: hidden;
 
-    &--active {
-        visibility: visible;
-    }
+      &--active {
+          visibility: visible;
+      }
 
-    &__brand,
-    &__list {
+      &__brand,
+      &__list {
         display: flex;
         flex-flow: column wrap;
         align-items: center;
@@ -76,12 +91,20 @@ $primary-color: #38C5B9;
         width: 50%;
         height: 100vh;
         overflow: hidden;
-    }
 
-    &__list {
+        // make the demo look nice, not required for your own use.
+        .logo {
+          width: 200px;
+          height: 200px;
+          // background: lighten(#000, 10);
+          border-radius: 50%;
+        }
+      }
+
+      &__list {
         margin: 0;
         padding: 0;
-        background: mix(#000, $primary-color, 20);
+        background: $header-color;
         list-style-type: none;
         transform: translate3d(0, -100%, 0);
         @include easeOut;
@@ -89,9 +112,9 @@ $primary-color: #38C5B9;
         &--active {
             transform: translate3d(0, 0, 0);
         }
-    }
+      }
 
-    &__brand {
+      &__brand {
         background: $primary-color;
         @include easeOut;
         transform: translate3d(0, 100%, 0);
@@ -99,18 +122,18 @@ $primary-color: #38C5B9;
         &--active {
             transform: translate3d(0, 0, 0);
         }
-    }
+      }
 
-    &__item {
+      &__item {
         transform: translate3d(500px, 0, 0);
         @include easeOut;
 
         &--active {
             transform: translate3d(0, 0, 0);
         }
-    }
+      }
 
-    &__link {
+      &__link {
         display: inline-block;
         position: relative;
         font-size: 30px;
@@ -122,31 +145,34 @@ $primary-color: #38C5B9;
         @include easeOut;
 
         &:before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 10px;
-            height: 2px;
-            background: #fff;
-            transform: translateX(-50%);
-            @include easeOut;
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 10px;
+          height: 2px;
+          background: #fff;
+          transform: translateX(-50%);
+          @include easeOut;
         }
 
         &:hover {
-            &:before {
-                width: 100%;
-            }
+          &:before {
+            width: 100%;
+          }
         }
-    }
+      }
 
-    // add delay to each menu item
-    @for $x from 1 through 6 {
-    .menu__item:nth-child(#{$x}) {
-    transition-delay: $x * .1s;
-    }
-    }
+      // add delay to each menu item
+      @for $x from 1 through 6 {
+      .menu__item:nth-child(#{$x}) {
+          transition-delay: $x * .1s;
+        }
+      }
+  }
 }
+
+
 
 // responsive tablet view
 @include tablet {
@@ -179,34 +205,6 @@ $primary-color: #38C5B9;
      height: 90px;
    }
  }
-}
-
-// make the demo look nice, not required for your own use.
-.logo {
-  width: 200px;
-  height: 200px;
-  background: lighten(#000, 10);
-  border-radius: 50%;
-}
-
-h1, h2, h3, p {
-  margin: 0;
-  font-weight: 400;
-}
-
-main {
-  height: 100vh;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  padding: 8vw;
-
-  h1 > a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 48px;
-    font-weight: 300;
-  }
 }
 
 .support {
