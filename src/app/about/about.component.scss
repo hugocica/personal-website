@@ -1,0 +1,23 @@
+#about {
+  // .container {
+    // background-color: #fff;
+
+    .inner-content {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .about-section {
+        width: 33.3333333333%;
+        height: 100%;
+        padding: 50px 30px;
+        flex-direction: row;
+        display: flex;
+
+        &._closed {
+          align-items: center;
+        }
+      }
+    }
+  // }
+}
