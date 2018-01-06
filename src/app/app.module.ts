@@ -25,10 +25,4 @@ import { AboutComponent } from './about/about.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-  changeSection() {
-    console.log('scroll event');
-  }
-
-}
+export class AppModule {}
