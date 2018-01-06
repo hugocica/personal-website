@@ -1,32 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "./assets/scss/variables";
+@import "./assets/scss/globals";
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,500,700');
 
 * {
   box-sizing: border-box;
 }
 
-// every before and after will extend
-%bfaf {
-	content: "";
-	position: absolute;
-	display: block;
-}
-
-.clearfix {
-    &:before, &:after {
-        content: " ";
-        display: block;
-    }
-    &:after {
-        clear: both;
-    }
-}
 
 body {
     min-height: 100vh;
     background: $primary-color;
-    font-family: 'Open Sans';
+    font-family: 'Raleway', 'Open Sans';
     color: white;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
