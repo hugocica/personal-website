@@ -16,4 +16,9 @@ body {
     color: white;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+
+    .full-section {
+      position: relative;
+      height: calc(100vh - 70px;  );
+    }
 }
