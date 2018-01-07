@@ -1,13 +1,16 @@
 <div id="about" class="full-section" (scroll)="changeSection()">
   <div class="inner-content">
-    <div id="infos" class="about-section _closed" style="background-color: dodgerblue;">
+    <div id="infos" class="about-section" (click)="expandSection($event)">
       <h2>About Me</h2>
     </div>
-    <div id="skills" class="about-section _closed" style="background-color: violet;">
+    <div id="skills" class="about-section" (click)="expandSection($event)">
       <h2>Skills</h2>
     </div>
-    <div id="experience" class="about-section _closed" style="background-color: crimson;">
+    <div id="experience" class="about-section" (click)="expandSection($event)">
       <h2>Work Experience</h2>
+    </div>
+    <div id="services" class="about-section" (click)="expandSection($event)">
+      <h2>Services</h2>
     </div>
   </div>
 </div>

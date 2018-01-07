@@ -12,4 +12,14 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
   }
 
+  expandSection(event: any) {
+    // var element = document.getElementById(event.target.id);
+    // element.classList.remove("_closed");
+    console.log($('#'+event.target.id));
+    if ( ! $('#'+event.target.id).hasClass('_opened') ) {
+      $('.about-section').toggleClass('hidden');
+      $('#'+event.target.id).addClass('_opened').removeClass('hidden');
+    }
+  }
+
 }
